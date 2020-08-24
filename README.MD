@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Build and train a CNN-RNN model which extracts features from image using CNN encoder and converts ihem into text using RNN decoder.
+Build and train a CNN-RNN model which extracts features from image using CNN encoder and converts them into text using RNN decoder.
 
 Network architecture:
 
@@ -19,7 +19,7 @@ Repository contains next notebooks:
 
 ## Evaluation
 
-
+//TODO: Add section
 
 ## Results
 
