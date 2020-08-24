@@ -6,16 +6,16 @@ Build and train a CNN-RNN model which extracts features from image using CNN enc
 
 Network architecture:
 
-![alt Network Architecture]('./images/encoder-decoder.png')
+![alt Network Architecture](./images/encoder-decoder.png)
 
 ## Notebooks
 
 Repository contains next notebooks:
 
-* [0_Dataset]('./0_Dataset.ipynb') - Dataset overview
-* [1_Preliminaries]('./1_Preliminaries.ipynb') - Loading and pre-processing data
-* [2_Training]('./2_Training.ipynb') - Training network
-* [3_Inference](3_Inference.ipynb) - Obtaining results from trained network
+* [0_Dataset](./_Dataset.ipynb) - Dataset overview
+* [1_Preliminaries](./1_Preliminaries.ipynb) - Loading and pre-processing data
+* [2_Training](./2_Training.ipynb) - Training network
+* [3_Inference](./3_Inference.ipynb) - Obtaining results from trained network
 
 ## Evaluation
 
