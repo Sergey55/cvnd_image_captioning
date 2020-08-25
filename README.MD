@@ -20,7 +20,7 @@ Encoder consistis of pre-trained ResNet-50 and following Embedding layer. ResNet
 
 ![alt Decoder](./images/decoder.png)
 
-Decoder consists of sengle LSTM layer by fully-connected layer.
+Decoder consists of single LSTM layer followed by fully-connected layer.
 
 ## Files
 
@@ -38,15 +38,15 @@ Repository contains next files:
 
 ## Evaluation
 
-//TODO: Add section
+Repository contains weights for trained encoder and decoder. Evalution process can be executed using [this](./3_Inference.ipynb) notebook.
 
 ## Resources
 
 * [Dataset details](https://cocodataset.org)
-* [Research paper](https://arxiv.org/pdf/1411.4555.pdf)
+* [Research paper](https://arxiv.org/pdf/1411.4555.pdf)
 
 ## Results
 
 As a result I obtained a neural network which can generate text description of image file.
 
-![alr Result](./images/result.png)
+![alt Result](./images/result.png)
