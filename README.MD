@@ -14,7 +14,7 @@ Network architecture:
 
 ![alt Encoder](./images/encoder.png)
 
-Encoder consistis of pre-trained ResNet-50 and following Embedding layer. ResNet-50 is a convolutional neural network whih is trained on more that a million images from ImageNet dataset. Embedding layer is used for co-embedding images and sentences together.
+Encoder consistis of pre-trained ResNet-50 network and following Embedding layer. ResNet-50 is a convolutional neural network which is trained on more that a million images from ImageNet dataset. Embedding layer is used for co-embedding images and sentences together.
 
 ### Decoder:
 
