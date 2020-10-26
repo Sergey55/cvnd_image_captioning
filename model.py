@@ -55,10 +55,9 @@ class CaptioningModel(pl.LightningModule):
     def sample(self, images, states=None, max_len=20):
         " accepts pre-processed image tensor (inputs) and returns predicted sentence (list of tensor ids of length max_len) "
         
-        features = self.encoder(images)
-        inputs = self.embed(features).unsqueeze(1)
+        features = self.encoder(images).unsqueeze(1)
 
-        return self.decoder.sample(inputs)
+        return self.decoder.sample(features)
 
 
 class EncoderCNN(nn.Module):
