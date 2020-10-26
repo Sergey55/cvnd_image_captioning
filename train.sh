@@ -1,4 +1,4 @@
 #!/bin/bash
-python train.py --max_epochs 3 --gpus=1
+python train.py --max_epochs 10 --gpus=1
 
-sudo shutdown -t 0
+gcloud compute instances stop $HOSTNAME
