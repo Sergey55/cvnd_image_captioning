@@ -6,6 +6,8 @@ from model import CaptioningModel
 from pytorch_lightning import Trainer
 from argparse import ArgumentParser
 
+from pytorch_lightning.callbacks import ModelCheckpoint
+
 def main(args):
 
     transformations = transforms.Compose([
@@ -20,7 +22,11 @@ def main(args):
 
     model = CaptioningModel(256, 256, vocab_size)
 
-    trainer = Trainer.from_argparse_args(args)
+    checkpoint_callback = ModelCheckpoint(
+        save_top_k=5
+    )
+
+    trainer = Trainer.from_argparse_args(args, checkpoint_callback=checkpoint_callback)
     trainer.fit(model, dm)
 
 if __name__ == '__main__':
