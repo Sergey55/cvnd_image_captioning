@@ -12,19 +12,21 @@ class Vocabulary(object):
         start_word="<start>",
         end_word="<end>",
         unk_word="<unk>",
-        annotations_file='../cocoapi/annotations/captions_train2014.json',
+        annotations_file='./coco/annotations/captions_train2014.json',
         vocab_from_file=False):
         """Initialize the vocabulary.
+
         Args:
-          vocab_threshold: Minimum word count threshold.
-          vocab_file: File containing the vocabulary.
-          start_word: Special word denoting sentence start.
-          end_word: Special word denoting sentence end.
-          unk_word: Special word denoting unknown words.
-          annotations_file: Path for train annotation file.
-          vocab_from_file: If False, create vocab from scratch & override any existing vocab_file
-                           If True, load vocab from from existing vocab_file, if it exists
+            vocab_threshold:    Minimum word count threshold.
+            vocab_file:         File containing the vocabulary.
+            start_word:         Special word denoting sentence start.
+            end_word:           Special word denoting sentence end.
+            unk_word:           Special word denoting unknown words.
+            annotations_file:   Path for train annotation file.
+            vocab_from_file:    If False, create vocab from scratch & override any existing vocab_file
+                                If True, load vocab from from existing vocab_file, if it exists
         """
+
         self.vocab_threshold = vocab_threshold
         self.vocab_file = vocab_file
         self.start_word = start_word
@@ -32,16 +34,20 @@ class Vocabulary(object):
         self.unk_word = unk_word
         self.annotations_file = annotations_file
         self.vocab_from_file = vocab_from_file
+
         self.get_vocab()
 
     def get_vocab(self):
-        """Load the vocabulary from file OR build the vocabulary from scratch."""
-        if os.path.exists(self.vocab_file) & self.vocab_from_file:
+        """Build the vocabulary from scratch or load from file."""
+
+        if self.vocab_from_file & os.path.exists(self.vocab_file):
             with open(self.vocab_file, 'rb') as f:
                 vocab = pickle.load(f)
+
                 self.word2idx = vocab.word2idx
                 self.idx2word = vocab.idx2word
-            print('Vocabulary successfully loaded from vocab.pkl file!')
+
+            print(f'Vocabulary successfully loaded from {self.vocab_file} file!')
         else:
             self.build_vocab()
             with open(self.vocab_file, 'wb') as f:
@@ -49,6 +55,7 @@ class Vocabulary(object):
         
     def build_vocab(self):
         """Populate the dictionaries for converting tokens to integers (and vice-versa)."""
+        
         self.init_vocab()
         self.add_word(self.start_word)
         self.add_word(self.end_word)
