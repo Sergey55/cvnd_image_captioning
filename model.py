@@ -18,7 +18,7 @@ class CaptioningModel(pl.LightningModule):
         self.encoder = EncoderCNN(self.embed_size)
 
         # Decoder
-        self.decoder = DecoderRNN(self.embed_size, self.hidden_size, self.vocab_size)
+        self.decoder = DecoderRNN(self.embed_size, self.hidden_size, self.vocab_size, num_layers=self.num_layers)
 
     def forward(self, images, captions):
         batch_size = images.size(0)
