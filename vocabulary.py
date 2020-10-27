@@ -69,7 +69,11 @@ class Vocabulary(object):
         self.idx = 0
 
     def add_word(self, word):
-        """Add a token to the vocabulary."""
+        """Add a token to the vocabulary.
+        
+        Args:
+            word: Word to be added.
+        """
         if not word in self.word2idx:
             self.word2idx[word] = self.idx
             self.idx2word[self.idx] = word
@@ -96,6 +100,7 @@ class Vocabulary(object):
     def __call__(self, word):
         if not word in self.word2idx:
             return self.word2idx[self.unk_word]
+            
         return self.word2idx[word]
 
     def __len__(self):

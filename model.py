@@ -6,7 +6,16 @@ import torchvision.models as models
 import pytorch_lightning as pl
 
 class CaptioningModel(pl.LightningModule):
+    """Neural network for generating image captions"""
     def __init__(self, embed_size, hidden_size, vocab_size, num_layers=1):
+        """Constructor
+
+        Args:
+            embed_size:     Embedding sise.
+            hidden_size:    Size of hidden LSTM layer
+            vocab_size:     Number of words in vocabulary
+            num_layers:     Number of hidden layers            
+        """ 
         super(CaptioningModel, self).__init__()
 
         self.embed_size = embed_size
@@ -61,16 +70,25 @@ class CaptioningModel(pl.LightningModule):
 
 
 class EncoderCNN(nn.Module):
-    
-    def __init__(self, embed_size):
+    """Encoder used to extract features from image using CNNs"""
+
+    def __init__(self, embed_size, pretrained=True):
+        """Constructor
+
+        Args:
+            embed_size:     Embedding sise.
+            pretrained:     Use pre-trained CNN model and set requires_grad to False for all layers
+        """
         super(EncoderCNN, self).__init__()
         
-        resnet = models.resnet50(pretrained=True)
+        resnet = models.resnet50(pretrained=pretrained)
         
-        for param in resnet.parameters():
-            param.requires_grad_(False)
+        if pretrained:
+            for param in resnet.parameters():
+                param.requires_grad_(False)
         
         modules = list(resnet.children())[:-1]
+        
         self.resnet = nn.Sequential(*modules)
         self.embed = nn.Linear(resnet.fc.in_features, embed_size)
 
@@ -82,8 +100,16 @@ class EncoderCNN(nn.Module):
     
 
 class DecoderRNN(nn.Module): 
-    
+    """Decoder used to convert extracted features to text"""
     def __init__(self, embed_size, hidden_size, vocab_size, num_layers=1):
+        """Constructor
+
+        Args: 
+            embed_size:     Embedding size
+            hidden_size:    Size of hidden LSTM layer
+            vocab_size:     Number of words in vocabulary
+            num_layers:     Number of hidden layers
+        """
         super(DecoderRNN, self).__init__()
         
         self.word_embeddings = nn.Embedding(vocab_size, embed_size)
