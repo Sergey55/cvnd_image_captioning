@@ -20,13 +20,9 @@ def main(args):
 
     vocab_size = len(dm.train_dataloader().dataset.vocab)
 
-    model = CaptioningModel(256, 256, vocab_size)
+    model = CaptioningModel(256, 256, vocab_size, num_layers=2)
 
-    checkpoint_callback = ModelCheckpoint(
-        save_top_k=5
-    )
-
-    trainer = Trainer.from_argparse_args(args, checkpoint_callback=checkpoint_callback)
+    trainer = Trainer.from_argparse_args(args)
     trainer.fit(model, dm)
 
 if __name__ == '__main__':
