@@ -7,14 +7,15 @@ import pytorch_lightning as pl
 
 class CaptioningModel(pl.LightningModule):
     """Neural network for generating image captions"""
-    def __init__(self, embed_size, hidden_size, vocab_size, num_layers=1):
+    def __init__(self, embed_size, hidden_size, vocab_size, num_layers=1, use_pretrained_encoder=True):
         """Constructor
 
         Args:
-            embed_size:     Embedding sise.
-            hidden_size:    Size of hidden LSTM layer
-            vocab_size:     Number of words in vocabulary
-            num_layers:     Number of hidden layers            
+            embed_size:                 Embedding sise.
+            hidden_size:                Size of hidden LSTM layer
+            vocab_size:                 Number of words in vocabulary
+            num_layers:                 Number of hidden layers
+            use_pretrained_encoder:     Use pretrained CNN in encoder            
         """ 
         super(CaptioningModel, self).__init__()
 
@@ -24,7 +25,7 @@ class CaptioningModel(pl.LightningModule):
         self.num_layers = num_layers
 
         # Encoder
-        self.encoder = EncoderCNN(self.embed_size)
+        self.encoder = EncoderCNN(self.embed_size, use_pretrained_encoder)
 
         # Decoder
         self.decoder = DecoderRNN(self.embed_size, self.hidden_size, self.vocab_size, num_layers=self.num_layers)
