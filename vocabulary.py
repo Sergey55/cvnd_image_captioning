@@ -7,7 +7,7 @@ from collections import Counter
 class Vocabulary(object):
 
     def __init__(self,
-        vocab_threshold,
+        vocab_threshold = 5,
         vocab_file='./vocab.pkl',
         start_word="<start>",
         end_word="<end>",
@@ -46,8 +46,6 @@ class Vocabulary(object):
 
                 self.word2idx = vocab.word2idx
                 self.idx2word = vocab.idx2word
-
-            print(f'Vocabulary successfully loaded from {self.vocab_file} file!')
         else:
             self.build_vocab()
             with open(self.vocab_file, 'wb') as f:
@@ -100,7 +98,7 @@ class Vocabulary(object):
     def __call__(self, word):
         if not word in self.word2idx:
             return self.word2idx[self.unk_word]
-            
+
         return self.word2idx[word]
 
     def __len__(self):
