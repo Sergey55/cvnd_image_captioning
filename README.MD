@@ -2,8 +2,8 @@
 
 [img_dataset_example]: ./images/coco-examples.jpg "Dataset examples"
 [img_encoder]: ./images/encoder.png "Encoder"
-[img_decoder]: (./images/decoder.png) "Decoder"
-[img_result]: (./images/result.png) "Result"
+[img_decoder]: ./images/decoder.png "Decoder"
+[img_result]: ./images/result.png "Result"
 
 # Image captioning
 
