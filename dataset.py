@@ -32,9 +32,9 @@ class CoCoDataset(Dataset):
             batch_size:         Size of batch in case of train mode.
             vocab_threshold:    Min word occurrence.
             vocab_file:         Location of vocabulary file
-            start_word:         Sequence of characters to use as a start word.
-            end_word:           Sequence of characters to use as an end word.
-            unk_word:           Sequence of characters to use as an unknown word (a word that vocabulary doesn't contain).
+            start_word:         Special word denoting sentence start.
+            end_word:           Special word denoting sentence end.
+            unk_word:           Special word denoting unknown words.
             annotations_file:   Path to file with annotations.
             vocab_from_file:    (True|False) Load vocabulary from file.
             img_folder:         Path to folder containing image files.
