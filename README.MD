@@ -1,3 +1,10 @@
+[//]: # (Image References)
+
+[img_dataset_example]: ./images/coco-examples.jpg "Dataset examples"
+[img_encoder]: ./images/encoder.png "Encoder"
+[img_decoder]: (./images/decoder.png) "Decoder"
+[img_result]: (./images/result.png) "Result"
+
 # Image captioning
 
 ## Project Overview
@@ -9,6 +16,8 @@ A CNN-RNN model which extracts features from image using CNN encoder and convert
 This project uses [COCO](https://cocodataset.org) dataset. The Microsoft Common Objects in COntext (MS COCO) dataset is a large-scale dataset for scene understanding. The dataset is commonly used to train and benchmark object detection, segmentation, and captioning algorithms.
 
 You can read more about the dataset on the [website](http://cocodataset.org/#home) or in the [research paper](https://arxiv.org/pdf/1405.0312.pdf).
+
+![Dataset examples][img_dataset_example]
 
 Model in this project trained using [2014 Train images](http://images.cocodataset.org/zips/train2014.zip) and [2014 Train/Val annotations](http://images.cocodataset.org/annotations/annotations_trainval2014.zip) files.
 
@@ -41,19 +50,19 @@ Network architecture:
 
 ### Encoder:
 
-![alt Encoder](./images/encoder.png)
+![Encoder][img_encoder]
 
 Encoder consistis of a pre-trained ResNet-50 network and a following Embedding layer. ResNet-50 is a convolutional neural network which is trained on more that a million images from ImageNet dataset. Embedding layer is used for co-embedding images and sentences together.
 
 ### Decoder:
 
-![alt Decoder](./images/decoder.png)
+![Decoder][img_decoder]
 
 Decoder consists of a single LSTM layer followed by a fully-connected layer.
 
 ## Training
 
-The model trained using `AI Platform Notebook` instance in Google Cloud Platform. This project requires `PyTorch Lightning` package to be pre-installed. Since the model implemented using PyTorch Lightning it can be trained using both GPU and TPU. Training process can be started using `train.sh` file. It automatically stops the instance at the end of training.
+The model trained using `AI Platform Notebook` instance in Google Cloud Platform. This project requires `PyTorch Lightning` package to be pre-installed. Since the model implemented using PyTorch Lightning it can be trained using both GPU and TPU. Training process can be started using `train.sh` file. It automatically stops an instance at the end of the training.
 
 ## Evaluation
 
@@ -71,7 +80,7 @@ A man is holding a tennis racket on a court.
 
 ## Files
 
-Repository contains next files:
+Repository contains next files and folders:
 
 * [images](./images) - Images used in notebook and this readme.
 * [models](./models) - Contains weights for trained models.
@@ -89,10 +98,6 @@ Repository contains next files:
 * [vocab.pkl](./vocab.pkl) - Vocabulary
 * [vocabulary.py](./vocabulary.py) - Vocabulary class which constructs vocabulary from the captions in the training dataset
 
-## Evaluation
-
-Repository contains weights for trained encoder and decoder. Evalution process can be executed using [this](./3_Inference.ipynb) notebook.
-
 ## Resources
 
 * [Dataset details](https://cocodataset.org)
@@ -102,4 +107,4 @@ Repository contains weights for trained encoder and decoder. Evalution process c
 
 As a result I obtained a neural network which can generate text description of image file.
 
-![alt Result](./images/result.png)
+![Result][img_result]
